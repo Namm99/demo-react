@@ -1,20 +1,30 @@
 // Class Component
 // Function Component(Hook) - new
 import React from "react";
+import UserInfor from "./UserInfor";
+import DisplayInfor from "./DisplayInfor";
 
 
 class MyComponent extends React.Component {
     state = {
-        name: "Nam",
-        address: "Thai Binh",
-        age: 21
+        listUsers: [
+            { id: 1, name: "Nam", age: 21 },
+            { id: 2, name: "Thanh", age: 22 },
+            { id: 3, name: "Tran", age: 23 },
+        ]
     }
+
 
     //JSX
     render() {
+        //DRY: don't repeat youseft
         return (
             <div>
-                my name is {this.state.name} and I'm from {this.state.address}
+                <UserInfor />
+                <br></br>
+                <DisplayInfor
+                    listUsers={this.state.listUsers}
+                />
             </div>
         )
     }
