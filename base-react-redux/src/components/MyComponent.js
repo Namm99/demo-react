@@ -1,17 +1,25 @@
 // Class Component
 // Function Component(Hook) - new
 import React from "react";
-import UserInfor from "./UserInfor";
+import AddUserInfor from "./AddUserInfor";
 import DisplayInfor from "./DisplayInfor";
 
 
 class MyComponent extends React.Component {
     state = {
         listUsers: [
-            { id: 1, name: "Nam", age: 21 },
-            { id: 2, name: "Thanh", age: 22 },
-            { id: 3, name: "Tran", age: 23 },
+            { id: 1, name: "Nam", age: '18' },
+            { id: 2, name: "Thanh", age: '16' },
+            { id: 3, name: "Tran", age: '23' },
+            { id: 4, name: "NamOld", age: '69' },
         ]
+    }
+
+    handleAddNewUser = (userObj) => {
+        console.log(">>>check data from parent", userObj)
+        this.setState({
+            listUsers: [userObj, ...this.state.listUsers]
+        })
     }
 
 
@@ -20,7 +28,9 @@ class MyComponent extends React.Component {
         //DRY: don't repeat youseft
         return (
             <div>
-                <UserInfor />
+                <AddUserInfor
+                    handleAddNewUser={this.handleAddNewUser}
+                />
                 <br></br>
                 <DisplayInfor
                     listUsers={this.state.listUsers}
