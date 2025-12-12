@@ -1,7 +1,11 @@
 import React from "react";
 import './DisplayInfor.scss';
 import logo from './../logo.svg'
+import { useState } from "react";
+import { useEffect } from "react";
 
+//stateless vs stateful
+// stateful
 // class DisplayInfor extends React.Component {
 //     // constructor(props) {
 //     //     console.log(">>>call constructor: 1")
@@ -111,14 +115,47 @@ import logo from './../logo.svg'
 //     }
 // }
 
-//stateless vs stateful
+
+//stateless (Hook)
 const DisplayInfor = (props) => {
     const { listUsers } = props;//object
 
+    const [isShowHideListUser, setShowHideListUser] = useState(true);
+    //giống kiểu viết mà ko có hook
+    // this.state = {
+    //     isShowHideListUser: true
+    // }
+
+
+    //handle function
+    const handleShowHideListUser = () => {
+        //ko hook
+        // this.setState({
+        //     isShowHideListUser: true
+        // })
+        setShowHideListUser(!isShowHideListUser)
+    }
+    console.log(">>>call me render")
+
+    useEffect(
+        () => {
+            if (listUsers.length === 0) {
+                alert("You deleted all the users")
+            }
+            console.log(">>>call me Effect")
+        }, [listUsers] // []-chỉ chạy 1 lần
+    )
+
+
     return (
         <div className="display-infor-container">
+            <div>
+                <span onClick={() => handleShowHideListUser()}>
+                    {isShowHideListUser === true ? "Hide list users" : "Show list users"}
+                </span>
+            </div>
 
-            {true &&
+            {isShowHideListUser &&
                 <div>
                     {listUsers.map((user) => {
                         // console.log(">>> check map user ", user)
@@ -139,6 +176,7 @@ const DisplayInfor = (props) => {
         </div>
     )
 }
+
 
 
 
