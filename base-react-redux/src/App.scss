@@ -11,15 +11,23 @@ body {
 .app-container {
     .header-container {
         .navbar-nav {
+            z-index: 10;
+            opacity: 0.3;
+
             .nav-link {
                 &.active {
                     color: #2f3c7e;
                 }
             }
         }
-
-        // .navbar-nav .nav-link.active {
-        //     color: red;
-        // }
     }
+}
+
+video {
+    position  : fixed;
+    top       : 0;
+    left      : 0;
+    width     : 100vw;
+    height    : 100vh;
+    object-fit: cover; //Giữ tỉ lệ & Phóng to để phủ kín màn hình
 }
