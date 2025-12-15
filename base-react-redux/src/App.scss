@@ -27,6 +27,11 @@ body {
             padding      : 5px 16px;
             border       : 1px solid #595959;
             height       : 40px;
+            background   : transparent;
+
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.05);
+            }
         }
 
         .btn-signup {
@@ -49,7 +54,7 @@ body {
 
             .nav-link {
                 &.active {
-                    color: #2f3c7e;
+                    color: #00bfff;
                 }
             }
         }

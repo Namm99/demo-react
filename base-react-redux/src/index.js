@@ -9,6 +9,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Admin from './components/Admin/Admin';
 import User from './components/User/User';
 import HomePage from './components/Home/HomePage';
+import ManageUser from './components/Admin/Content/ManageUser';
+import DashBoard from './components/Admin/Content/DashBoard';
 
 
 
@@ -19,10 +21,14 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<App />}>
-          <Route index element={<HomePage />} />
+
+          <Route index element={<HomePage />} />{/*Mặc định là ở HomePage*/}
           <Route path='users' element={<User />} />
         </Route>
-        <Route path='admins' element={<Admin />} />
+        <Route path='admins' element={<Admin />}>
+          <Route index element={<DashBoard />} />
+          <Route path='manage-user' element={<ManageUser />} />
+        </Route>
       </Routes>
     </BrowserRouter>
     {/* </React.StrictMode> */}

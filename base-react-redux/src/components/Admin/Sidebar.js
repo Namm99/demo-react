@@ -1,5 +1,5 @@
 import 'react-pro-sidebar/dist/css/styles.css';
-
+import './Sidebar.scss'
 import {
     ProSidebar,
     Menu,
@@ -11,6 +11,9 @@ import {
 } from 'react-pro-sidebar';
 import { FaTachometerAlt, FaGem, FaList, FaGithub, FaRegLaughWink, FaHeart } from 'react-icons/fa';
 import sidebarBg from '../../assets/imgSideBar.png';
+import { DiReact } from 'react-icons/di';
+import { MdDashboard } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 
 
 
@@ -38,28 +41,32 @@ const Sidebar = (props) => {
                             whiteSpace: 'nowrap',
                         }}
                     >
-                        NamSensei
+                        <DiReact size={'3em'} color='#00bfff' />
+                        <span>Namm99</span>
                     </div>
                 </SidebarHeader>
 
                 <SidebarContent>
                     <Menu iconShape="circle">
                         <MenuItem
-                            icon={<FaTachometerAlt />}
-                            suffix={<span className="badge red">New</span>}
+                            icon={<MdDashboard />}
+                        // suffix={<span className="badge red">New</span>} //Làm chữ new bên cạnh
                         >
-                            dashboard
+                            Dashboard
+                            <Link to="/admins" />
                         </MenuItem>
-                        <MenuItem icon={<FaGem />}> components</MenuItem>
                     </Menu>
                     <Menu iconShape="circle">
                         <SubMenu
-                            suffix={<span className="badge yellow">3</span>}
-                            icon={<FaRegLaughWink />}
+                            icon={<FaGem />}
+                            title='Features'
                         >
-                            <MenuItem> 1</MenuItem>
-                            <MenuItem> 2</MenuItem>
-                            <MenuItem> 3</MenuItem>
+                            <MenuItem>
+                                Quản lý Users
+                                <Link to="/admins/manage-user" />
+                            </MenuItem>
+                            <MenuItem> Quản lý bài Quiz</MenuItem>
+                            <MenuItem> Quản lý câu hỏi</MenuItem>
                         </SubMenu>
                     </Menu>
                 </SidebarContent>
@@ -72,14 +79,14 @@ const Sidebar = (props) => {
                         }}
                     >
                         <a
-                            href="https://github.com/azouaoui-med/react-pro-sidebar"
+                            href="https://github.com/Namm99"
                             target="_blank"
                             className="sidebar-btn"
                             rel="noopener noreferrer"
                         >
                             <FaGithub />
                             <span style={{ whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden' }}>
-                                viewSource
+                                Namm99
                             </span>
                         </a>
                     </div>
