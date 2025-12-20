@@ -66,6 +66,8 @@ const ModalCreateUser = (props) => {
             toast.success(data.EM)
             //success thì out modal
             handleClose();
+            // từ con gọi lên cha để update table
+            await props.fetchListUsers();
         }
         if (data && data.EC !== 0) {
             toast.error(data.EM)
