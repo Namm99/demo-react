@@ -61,6 +61,11 @@ const ModalCreateUser = (props) => {
             return;
         }
 
+        if (!password) {
+            toast.error("Invalid password");
+            return;
+        }
+
         let data = await postCreateNewUser(email, password, username, role, image);
         if (data && data.EC === 0) {
             toast.success(data.EM)
