@@ -1,30 +1,45 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { deleteUser } from '../../../services/apiService'
+import { toast } from 'react-toastify';
 
-const ModalDeleteUser = () => {
-    const [show, setShow] = useState(false);
+
+const ModalDeleteUser = (props) => {
+    const { show, setShow, dataDelete } = props
 
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleSubmitDeleteUser = async () => {
+        let data = await deleteUser(dataDelete.id);
+        if (data && data.EC === 0) {
+            toast.success(data.EM)
+            //success thì out modal
+            handleClose();
+            // từ con gọi lên cha để delete in table
+            await props.fetchListUsers();
+        }
+        if (data && data.EC !== 0) {
+            toast.error(data.EM)
+        }
+    }
 
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
-                Launch demo modal
-            </Button>
-
-            <Modal show={show} onHide={handleClose}>
+            <Modal
+                show={show}
+                onHide={handleClose}
+                backdrop='static'
+            >
                 <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
+                    <Modal.Title>Comfirm delete the user</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+                <Modal.Body>Are you sure to delete the user. Email is <b>{dataDelete && dataDelete.email ? dataDelete.email : ""}</b></Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
-                        Close
+                        Cancal
                     </Button>
-                    <Button variant="primary" onClick={handleClose}>
-                        Save Changes
+                    <Button variant="primary" onClick={handleSubmitDeleteUser}>
+                        Comfirm
                     </Button>
                 </Modal.Footer>
             </Modal>

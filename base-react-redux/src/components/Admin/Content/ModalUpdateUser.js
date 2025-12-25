@@ -34,7 +34,7 @@ const ModalUpdateUser = (props) => {
 
     //Update-btn
     useEffect(() => {
-        console.log("run useEffect", dataUpdate)
+        // console.log("run useEffect", dataUpdate)
         //check dataUpdate ko rỗng thì update state
         if (!_.isEmpty(dataUpdate)) {
             //update state
@@ -92,7 +92,7 @@ const ModalUpdateUser = (props) => {
         }
     }
 
-    console.log("check dataupdate, ", dataUpdate)
+    // console.log("check dataupdate, ", dataUpdate)
 
     return (
         <>
