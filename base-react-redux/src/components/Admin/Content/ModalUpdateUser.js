@@ -85,7 +85,9 @@ const ModalUpdateUser = (props) => {
             //success thì out modal
             handleClose();
             // từ con gọi lên cha để update table
-            await props.fetchListUsers();
+            // await props.fetchListUsers();
+            // props.setCurrentPage(1);
+            await props.fetchListUsersWhitPaginate(props.currentPage);
         }
         if (data && data.EC !== 0) {
             toast.error(data.EM)
