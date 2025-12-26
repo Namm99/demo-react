@@ -13,7 +13,7 @@ import TableUserPaginate from './TableUserPaginate';
 
 const ManageUser = (props) => {
     //Paginate
-    const LIMIT_USER = 1;
+    const LIMIT_USER = 6;
     const [pageCount, setPageCount] = useState(0)
     const [currentPage, setCurrentPage] = useState(1)
 

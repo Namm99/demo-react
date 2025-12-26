@@ -51,7 +51,7 @@ const TableUserPaginate = (props) => {
                         })}
                     {listUsers && listUsers.length === 0 &&
                         <tr>
-                            <td colSpan={'4'}> Not found user</td>
+                            <td colSpan={'5'}> Not found user</td>
                         </tr>
                     }
                 </tbody>
