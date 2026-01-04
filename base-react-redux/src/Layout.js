@@ -11,24 +11,30 @@ import DashBoard from './components/Admin/Content/DashBoard';
 import Login from './components/Auth/Login';
 import Register from './components/Auth/Register';
 import ListQuiz from './components/User/ListQuiz';
+import DetailQuiz from './components/User/DetailQuiz';
 
+
+
+const NotFound = () => {
+    return <div className='alert alert-danger'>404 Not Found</div>
+}
 
 const Layout = (props) => {
     return (
         <>
             <Routes>
                 <Route path='/' element={<App />}>
-
                     <Route index element={<HomePage />} />{/*Mặc định là ở HomePage*/}
                     <Route path='users' element={<ListQuiz />} />
                 </Route>
+                <Route path='/quiz/:id' element={<DetailQuiz />} />
                 <Route path='/admins' element={<Admin />}>
                     <Route index element={<DashBoard />} />
                     <Route path='manage-user' element={<ManageUser />} />
                 </Route>
                 <Route path='/login' element={<Login />} />
                 <Route path='/register' element={<Register />} />
-
+                <Route path='*' element={<NotFound />} />
             </Routes>
             <ToastContainer
                 position="top-right"
